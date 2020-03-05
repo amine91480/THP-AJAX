@@ -1,0 +1,3 @@
+console.log(document.getElementsByTagName('tbody')[0])
+
+document.getElementsByTagName('tbody')[0].insertAdjacentHTML("beforeend", "<%= j render 'email_solo', email: @email %>")
