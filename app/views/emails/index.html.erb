@@ -13,7 +13,7 @@
       <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Email Sender</th>
+        <th scope="col-2">Email Sender</th>
         <th scope="col">Email content</th>
       </tr>
       </thead>
@@ -21,8 +21,8 @@
       <% @allMail.each do |mail| %>
       <tr>
         <th id=<%= mail.id %> scope="row"> <%= mail.id %></th>
-        <td> <%= mail.object %> </td>
-        <td> <%= mail.body %> </td>
+        <td> <%= link_to "#{mail.object}", email_path(mail.id), :method => :get , remote: true, :class => "btn btn-lg btn-primary" %> </td>
+        <td>  </td>
       </tr>
       <% end %>
       </tr>
