@@ -5,6 +5,7 @@ class EmailsController < ApplicationController
 
   def show
     @email = Email.find(params[:id])
+    @email.save
       respond_to do |format|
         format.html { redirect_to root_path }
         format.js {  }

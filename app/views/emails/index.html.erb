@@ -1,45 +1,55 @@
-
-<div class="container">
-  <p class="notice"><%= notice %></p>
-  <p class="alert"><%= alert %></p>
-
+<div class="container-fluid" >
   <div class="row justify-content-center align-items-center">
     <div class="m-3">
     <%= link_to "Recevoir un nouveau mail", @email, :method => :post, remote: true, :class => "btn btn-lg btn-primary" %>
     </div>
   </div>
+<!--
   <div class="row">
     <table class="table">
       <thead>
       <tr>
         <th scope="col">#</th>
-        <th scope="col-2">Email Sender</th>
+        <th scope="col">Email Sender</th>
         <th scope="col">Email content</th>
       </tr>
       </thead>
       <tbody>
-      <% @allMail.each do |mail| %>
+      <%# @allMail.each do |mail| %>
       <tr>
-        <th id=<%= mail.id %> scope="row"> <%= mail.id %></th>
-        <td> <%= link_to "#{mail.object}", email_path(mail.id), :method => :get , remote: true, :class => "btn btn-lg btn-primary" %> </td>
+        <th id=<%#= mail.id %> scope="row"> <%#= mail.id %></th>
+        <td> <%#= link_to "#{mail.object}", email_path(mail.id), :method => :get , remote: true, :class => "btn btn-lg btn-primary" %> </td>
         <td>  </td>
       </tr>
-      <% end %>
+      <%# end %>
       </tr>
       </tbody>
     </table>
   </div>
 </div>
+-->
 
-<!--<div class="container">
-  <div class="row">
-    <%# @allMail.each do |mail| %>
-    <div class="col-6 p-3">
-      <p> <%#= mail.object %></p>
-    </div>
-    <div class="col-6 p-3">
-      <%#= mail.body %>
-    </div>
-      <%# end %>
+
+<div class="row justify-content-around">
+  <div class="col-3">
+    <ul id='email_list'class="list-group">
+    <% @allMail.each do |email|%>
+      <li id="<%=email.id %>" class="list-group-item d-flex justify-content-between align-items-center">
+        <%= link_to "#{email.object}", email_path(email.id), :method => :get , remote: true %>
+        <span class="badge badge-primary badge-pill"> Not view </span>
+      </li>
+    <% end %>
+    </ul>
   </div>
-</div>-->
+  <div class="col-8">
+    <div class="card" >
+      <div class="card-body">
+        <h5 class="card-title">Card title</h5>
+        <p class="card-text">Select an Email subject in your left to add the view of the content just here.</p>
+        <a href="#" class="card-link">Card link</a>
+        <a href="#" class="card-link">Another link</a>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

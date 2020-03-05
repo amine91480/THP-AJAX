@@ -1,2 +1,9 @@
-console.log(document.getElementById("<% @email.id %>"))
+cardTitle = document.getElementsByClassName("card-title")[0];
+cartText = document.getElementsByClassName("card-text")[0];
+console.log(cardTitle)
+console.log(cartText)
+
+cardTitle.innerText = "<%= @email.object %>"
+cartText.innerText = "<%= @email.body %>"
+
 
