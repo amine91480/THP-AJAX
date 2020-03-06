@@ -1,9 +1,9 @@
-cardTitle = document.getElementsByClassName("card-title")[0];
-cartText = document.getElementsByClassName("card-text")[0];
-console.log(cardTitle)
-console.log(cartText)
 
-cardTitle.innerText = "<%= @email.object %>"
-cartText.innerText = "<%= @email.body %>"
+
+if (!document.getElementsByClassName("card-body")[0]) {
+  document.getElementsByClassName("card")[0].insertAdjacentHTML("afterbegin", "<%= j render 'show_email', email: @email %>");
+} else  {
+  document.getElementsByClassName("card-body")[0].remove()
+}
 
 

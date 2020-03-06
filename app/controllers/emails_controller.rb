@@ -1,6 +1,6 @@
 class EmailsController < ApplicationController
   def index
-    @allMail = Email.all
+    @emails = Email.all
   end
 
   def show
@@ -23,7 +23,16 @@ class EmailsController < ApplicationController
       end
     else
       redirect_to root_path
-      flash[:notice] = "Please try again"
+    end
+  end
+
+  def destroy
+
+  @email = Email.find(params[:id])
+    @email.destroy
+    respond_to do |format|
+      format.html { redirect_to root_path }
+      format.js {     }
     end
   end
 end
