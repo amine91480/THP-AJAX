@@ -5,7 +5,11 @@ class EmailsController < ApplicationController
 
   def show
     @email = Email.find(params[:id])
-
+    if (@email.read = false); {
+        @email.read => true
+      }
+    end
+    @email.save
       respond_to do |format|
         format.html { redirect_to root_path }
         format.js {  }
