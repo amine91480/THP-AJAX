@@ -2,5 +2,7 @@
   <h5 class="card-title"> <%= email.object %></h5>
   <p class="card-text"> <%= email.body %></p>
   <%= link_to "Supprimer", email_path(email.id),method: 'delete' , remote: true,  class: "btn btn-danger" %>
-  <%= link_to "Marquer comme non-lu", email_path(email.id) , class: "btn btn-info" %>
+  <% if (email.read) %>
+  <%= link_to "Marquer comme non-lu", email_path(email.id, read: false),method: 'put', remote: true, class: "btn btn-info" %>
+<% end %>
 </div>

@@ -1,9 +1,12 @@
 
 
 if (!document.getElementsByClassName("card-body")[0]) {
+
   document.getElementsByClassName("card")[0].insertAdjacentHTML("afterbegin", "<%= j render 'show_email', email: @email %>");
-} else  {
+} else if (document.getElementsByClassName("card-body")[0]) {
+
   document.getElementsByClassName("card-body")[0].remove()
+  document.getElementsByClassName("card")[0].insertAdjacentHTML("afterbegin", "<%= j render 'show_email', email: @email %>");
 }
 
 
