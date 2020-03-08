@@ -1,5 +1,9 @@
 
-<li id="<%=email.id %>" class="list-group-item d-flex justify-content-between align-items-center">
+<li id="<%=email.id %>" class="list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-center">
   <h4> <%= link_to "#{email.object}", email_path(email.id), :method => :get , remote: true %> </h4>
-  <span class="badge badge-primary badge-pill"> <%= email.read %></span>
+  <% if (email.read == false) %>
+    <span class="badge badge-primary badge-pill"> Non lu </span>
+  <% else %>
+    <span class="badge badge-primary badge-pill"> Lu </span>
+  <% end %>
 </li>

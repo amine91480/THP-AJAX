@@ -1,1 +1,15 @@
-// Je ne sait pas comment faire :/
+
+  if(<%= @email.read === true  %>) {
+    document.getElementsByClassName("btn btn-info")[0] = ("<%= j render "email_change_true", email: @email %>")
+    console.log("Elem passer comme Lu")
+    document.getElementById(<%= @email.id %>).classList.remove("list-group-item-dark")
+    document.getElementById(<%= @email.id %>).childNodes[3].innerText = "Lu"
+    console.log(document.getElementsByClassName("btn btn-info")[0])
+  } if(<%= @email.read === false  %>) {
+    // Semble bien fonctionner
+    document.getElementsByClassName("btn btn-info")[0] = ("<%= j render "email_change", email: @email %>")
+    console.log("Elem passer comme non lus")
+    document.getElementById(<%= @email.id %>).classList.add("list-group-item-dark")
+    document.getElementById(<%= @email.id %>).childNodes[3].innerText = "Non Lu"
+    console.log(document.getElementsByClassName("btn btn-info")[0])
+  }

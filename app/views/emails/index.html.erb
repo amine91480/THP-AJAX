@@ -7,17 +7,17 @@
 
   <div class="row justify-content-around">
     <div class="col-3">
-      <ul id='email_list'class="list-group">
+      <ul id='email_list' class="list-group">
       <% @emails.each do |email|%>
           <% if (email.read == false) %>
         <li id="<%=email.id %>" class="list-group-item list-group-item-action list-group-item-dark d-flex justify-content-between align-items-center">
           <h4><%= link_to "#{email.object}", email_path(email.id), :method => :get , remote: true %></h4>
-          <span class="badge badge-primary badge-pill"> <%= email.read %></span>
+          <span class="badge badge-primary badge-pill"> Non lu </span>
         </li>
             <% else %>
             <li id="<%=email.id %>" class="list-group-item d-flex justify-content-between align-items-center">
               <h4><%= link_to "#{email.object}", email_path(email.id), :method => :get , remote: true %></h4>
-              <span class="badge badge-primary badge-pill"> <%= email.read %></span>
+              <span class="badge badge-primary badge-pill"> Lu </span>
             </li>
             <%end %>
       <% end %>

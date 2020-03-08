@@ -1,12 +1,31 @@
 
 
 if (!document.getElementsByClassName("card-body")[0]) {
+  if (<%= @email.read == true %>) {
+    document.getElementsByClassName("card")[0].insertAdjacentHTML("afterbegin", "<%= j render 'show_email', email: @email %>");
+    document.getElementById(<%= @email.id %>).childNodes[3].innerText = "Lu";
+    document.getElementById(<%= @email.id %>).classList.remove("list-group-item-dark");
+    console.log("<%=@email.read %> Premier show de l'élém qui est déjà lu")
+  }else {
+    document.getElementsByClassName("card")[0].insertAdjacentHTML("afterbegin", "<%= j render 'show_email', email: @email %>");
+    document.getElementById(<%= @email.id %>).childNodes[3].innerText = "Non lu";
+    console.log("<%=@email.read %> Première show de l'élém qui est non lu")
+  }
+}
 
-  document.getElementsByClassName("card")[0].insertAdjacentHTML("afterbegin", "<%= j render 'show_email', email: @email %>");
-} else if (document.getElementsByClassName("card-body")[0]) {
-
-  document.getElementsByClassName("card-body")[0].remove()
-  document.getElementsByClassName("card")[0].insertAdjacentHTML("afterbegin", "<%= j render 'show_email', email: @email %>");
+else if (document.getElementsByClassName("card-body")[0]) {
+  if (<%= @email.read == false %>) {
+    document.getElementsByClassName("card-body")[0].remove()
+    document.getElementsByClassName("card")[0].insertAdjacentHTML("afterbegin", "<%= j render 'show_email', email: @email %>");
+    document.getElementById(<%= @email.id %>).childNodes[3].innerText = "Non lu";
+    console.log("<%=@email.read %> = l'élément n'est pas encore Lu")
+  }else {
+    document.getElementsByClassName("card-body")[0].remove()
+    document.getElementsByClassName("card")[0].insertAdjacentHTML("afterbegin", "<%= j render 'show_email', email: @email %>");
+    document.getElementById(<%= @email.id %>).childNodes[3].innerText = "Lu";
+    document.getElementById(<%= @email.id %>).classList.remove("list-group-item-dark");
+    console.log("<%=@email.read %> L'élément à déjà était lu")
+  }
 }
 
 

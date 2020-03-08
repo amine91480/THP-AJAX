@@ -5,10 +5,7 @@ class EmailsController < ApplicationController
 
   def show
     @email = Email.find(params[:id])
-    if (@email.read = false); {
-        @email.read => true
-      }
-    end
+    @email.read = true
     @email.save
       respond_to do |format|
         format.html { redirect_to root_path }
@@ -23,7 +20,7 @@ class EmailsController < ApplicationController
     if(@email.save)
       respond_to do |format|
         format.html { redirect_to root_path }
-        format.js {     }
+        format.js {   }
       end
     else
       redirect_to root_path
@@ -33,6 +30,10 @@ class EmailsController < ApplicationController
   def update
     @email = Email.find(params[:id])
     @email.update(params.permit(:read))
+    respond_to do |format|
+      format.html {redirect_to root_path}
+      format.js {}
+    end
   end
 
   def destroy
@@ -43,4 +44,9 @@ class EmailsController < ApplicationController
       format.js {     }
     end
   end
+
+  private
+  /Rien pour l'instant/
+
 end
+
